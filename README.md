@@ -1,2 +1,0 @@
-# TeFiLuck-backend
-

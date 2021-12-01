@@ -1,0 +1,28 @@
+import { WebSocketClient } from '@terra-money/terra.js';
+import { MessageSubscriber } from '@websockets/interfaces/subsriber.interface'
+import { MessageBroadcaster } from '@websockets/interfaces/broadcaster.interface';
+import { logger } from '@/utils/logger';
+import { BlockWsMessage } from '@websockets/messages/blocks.message';
+
+class TerraWsBlocksListener implements MessageSubscriber {
+    public broadcaster: MessageBroadcaster
+
+    private wsClient: WebSocketClient;
+
+    constructor(terraWsUrl: string, broadcaster: MessageBroadcaster) {
+        this.wsClient = new WebSocketClient(terraWsUrl);
+        this.broadcaster = broadcaster;
+    }
+
+    public subscribeEvent(): void {
+        this.wsClient.subscribe("NewBlockHeader", {}, (data) => {
+            logger.info("terra listener, received NewBlockHeader message");
+            let msg = new BlockWsMessage(data.value["header"]["height"]);
+            this.broadcaster.handleCallback(msg);
+        });
+
+        this.wsClient.start();
+    }
+}
+
+export default TerraWsBlocksListener;
