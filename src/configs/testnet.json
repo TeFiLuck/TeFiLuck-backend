@@ -1,5 +1,5 @@
 {
-    "env": "development",
+    "env": "testnet",
     "log": {
         "format": "dev",
         "dir": "../logs"
@@ -8,5 +8,5 @@
         "origin": true,
         "credentials": true
     },
-    "terraWsUrl": "ws://localhost:26657/websocket"
+    "terraWsUrl": "ws://18.132.244.126:26657/websocket"
 }

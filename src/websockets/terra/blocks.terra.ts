@@ -16,7 +16,6 @@ class TerraWsBlocksListener implements MessageSubscriber {
 
     public subscribeEvent(): void {
         this.wsClient.subscribe("NewBlockHeader", {}, (data) => {
-            logger.info("terra listener, received NewBlockHeader message");
             let msg = new BlockWsMessage(data.value["header"]["height"]);
             this.broadcaster.handleCallback(msg);
         });
