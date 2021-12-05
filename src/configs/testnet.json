@@ -1,0 +1,12 @@
+{
+    "env": "testnet",
+    "log": {
+        "format": "dev",
+        "dir": "../logs"
+    },
+    "cors": {
+        "origin": true,
+        "credentials": true
+    },
+    "terraWsUrl": "ws://18.132.244.126:26657/websocket"
+}
