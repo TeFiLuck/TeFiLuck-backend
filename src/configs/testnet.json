@@ -8,5 +8,5 @@
         "origin": true,
         "credentials": true
     },
-    "terraWsUrl": "ws://18.132.244.126:26657/websocket"
+    "terraWsUrl": "ws://35.179.75.253:26657/websocket"
 }
