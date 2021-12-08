@@ -8,5 +8,8 @@
         "origin": true,
         "credentials": true
     },
-    "terraWsUrl": "ws://13.40.109.209:26657/websocket"
+    "terraWsUrl": "ws://13.40.109.209:26657/websocket",
+    "terraLcdUrl": "https://bombay-lcd.terra.dev",
+    "terraChainId": "bombay-12",
+    "p2pcoinflipContract": ""
 }

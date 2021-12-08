@@ -8,5 +8,8 @@
         "origin": true,
         "credentials": true
     },
-    "terraWsUrl": "ws://localhost:26657/websocket"
+    "terraWsUrl": "ws://localhost:26657/websocket",
+    "terraLcdUrl": "http://localhost:1317",
+    "terraChainId": "localterra",
+    "p2pcoinflipContract": "terra1rdmhrrgr3uz5hg0vqz7ekcclj89zk5jevh0xgs"
 }

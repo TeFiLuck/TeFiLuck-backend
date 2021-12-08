@@ -23,8 +23,9 @@
     "paths": {
       "@/*": ["*"],
       "@controllers/*": ["controllers/*"],
-      "@dtos/*": ["dtos/*"],
+      "@dto/*": ["dto/*"],
       "@exceptions/*": ["exceptions/*"],
+      "@infrastructure/*": ["infrastructure/*"],
       "@interfaces/*": ["interfaces/*"],
       "@middlewares/*": ["middlewares/*"],
       "@models/*": ["models/*"],
