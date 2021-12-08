@@ -1,7 +1,7 @@
-import { WsMessage } from "@websockets/interfaces/message.interface";
+import { WsMessageType, WsMessage } from "@websockets/interfaces/message.interface";
 
 export class BlockWsMessage implements WsMessage<Block> {
-    public type: string = "block_message";
+    public type: WsMessageType = "block_message";
     public data: Block;
 
     constructor(height: number | string) {
