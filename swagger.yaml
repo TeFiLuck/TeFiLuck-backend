@@ -1,19 +1,58 @@
 tags:
-- name: users
-  description: users API
+- name: coinflip
+  description: coinflip API
 
 paths:
-# [GET] users
-  /users:
+  /api/health:
     get:
-      tags:
-      - users
-      summary: Find All Users
+      summary: health check endpoint
       responses:
         200:
-          description: 'OK'
-        500:
-          description: 'Server Error'
+          desciption: 'OK'
+  
+  /api/coinflip/config:
+    get:
+      tags:
+      - coinflip
+      summary: get coinflip contract config
+      responses:
+        200:
+          desciption: 'OK'
+  
+  /api/coinflip/mybets/{address}:
+    get:
+      tags:
+      - coinflip
+      summary: query address pending and ongoing bets
+      parameters:
+      - name: address
+        in: path
+        desciption: wallet address
+        required: true
+        type: string
+      responses:
+        200:
+          desciption: 'OK'
+
+  /api/coinflip/bets/pending:
+    get:
+      tags:
+      - coinflip
+      summary: query pending bets list
+      parameters:
+      - name: skip
+        in: query
+        desciption: amount of bets to skip
+        required: true
+        type: integer
+      - name: limit
+        in: query
+        desciption: amount of bets to query
+        required: true
+        type: integer
+      responses:
+        200:
+          desciption: 'OK'
 
 schemes:
  - https
