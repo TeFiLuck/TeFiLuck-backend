@@ -9,4 +9,5 @@ export interface OngoingBet {
     blocksUntilLiquidation: number;
     liquidationBlock: number;
     responderLiquidationBlocksGap: number;
+    created_at: number;
 }
