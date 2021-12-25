@@ -11,5 +11,5 @@
     "terraWsUrl": "ws://13.40.109.209:26657/websocket",
     "terraLcdUrl": "https://bombay-lcd.terra.dev",
     "terraChainId": "bombay-12",
-    "p2pcoinflipContract": "terra1t495t3z54w5l3k0jlwxx6h90jywgn4tft4fc8r"
+    "p2pcoinflipContract": "terra1akrk5q7yxz0a5eu7vda64huxqlqpg03rkxv86a"
 }

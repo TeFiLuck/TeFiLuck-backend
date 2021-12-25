@@ -1,5 +1,5 @@
 build:
-	docker build -t ${tag} .
+	docker build -f ${file} -t ${tag} .
 clean:
 	docker rmi -f ${tag}
 run:
