@@ -5,6 +5,10 @@ import { ConfigResponse } from './responses/coinflip/config.response';
 import { AddressPendingBets } from './responses/coinflip/addressPendingBets.response';
 import { OngoingBet } from './responses/coinflip/ongoingBet.response';
 import { PendingBet } from './responses/coinflip/pendingBet.response';
+import { PendingBetsCount } from './responses/coinflip/pendingBetsCount.response';
+import { PendingBetsFilterDto } from '@/dto/coinflip/pendingBetsFilter.dto';
+import { HistoricalBetsResponse } from './responses/coinflip/historicalBets.response';
+import { add } from 'winston';
 
 class CoinflipContractQuerier {
     private terra: LCDClient = lcdInstance();
@@ -30,6 +34,44 @@ class CoinflipContractQuerier {
         );
     }
 
+    public async queryPendingBets(filter: PendingBetsFilterDto): Promise<PendingBet[]> {
+        return await this.terra.wasm.contractQuery<PendingBet[]>(
+            this.contract,
+            {
+                pending_bets: {
+                    filter: {
+                        skip: filter.skip,
+                        limit: filter.limit,
+                        exclude_address: filter.exclude_address,
+                        assets: filter.assets,
+                        liquidation: filter.liquidation,
+                        sort_by: filter.sort_by,
+                    }
+                }
+            }
+        );
+    }
+
+    public async queryPendingBetsCount(): Promise<PendingBetsCount> {
+        return await this.terra.wasm.contractQuery<PendingBetsCount>(
+            this.contract,
+            {
+                pending_bets_count: {},
+            }
+        );
+    }
+
+    public async queryOngoingBetById(bet_id: string): Promise<OngoingBet> {
+        return await this.terra.wasm.contractQuery<OngoingBet>(
+            this.contract,
+            {
+                ongoing_bet: {
+                    bet_id: bet_id,
+                }
+            }
+        );
+    }
+
     public async queryAddressOngoingBets(address: string): Promise<OngoingBet[]> {
         return await this.terra.wasm.contractQuery<OngoingBet[]>(
             this.contract,
@@ -41,16 +83,29 @@ class CoinflipContractQuerier {
         );
     }
 
-    public async queryPendingBets(skip: number, limit: number): Promise<PendingBet[]> {
-        return await this.terra.wasm.contractQuery<PendingBet[]>(
+    public async queryPublicLiquidatableBets(skip: number, limit: number): Promise<OngoingBet[]> {
+        return await this.terra.wasm.contractQuery<OngoingBet[]>(
             this.contract,
             {
-                pending_bets: {
+                public_liquidatable: {
                     skip: skip,
                     limit: limit,
                 }
             }
-        )
+        );
+    }
+
+    public async queryHistoricalBets(skip: number, limit: number, address: string): Promise<any> {
+        return await this.terra.wasm.contractQuery<any>(
+            this.contract,
+            {
+                historical_bets: {
+                    skip: skip,
+                    limit: limit,
+                    address: address,
+                }
+            }
+        );
     }
 }
 

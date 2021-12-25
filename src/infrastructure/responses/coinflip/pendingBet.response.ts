@@ -5,4 +5,5 @@ export interface PendingBet {
     signature: string;
     blocksUntilLiquidation: number;
     asset: Asset;
+    created_at: number;
 }
