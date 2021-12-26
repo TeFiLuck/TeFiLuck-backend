@@ -16,6 +16,7 @@ class CoinflipRoute implements Routes {
         this.router.get(`${this.path}/mybets/history`, this.coinflipController.getHistoricalBets);
         this.router.get(`${this.path}/mybets/:address`, this.coinflipController.getMyBets);
         this.router.post(`${this.path}/bets/pending`, this.coinflipController.getPendingBets);
+        this.router.get(`${this.path}/bets/pending/:address/:id`, this.coinflipController.getPendingBetById);
         this.router.get(`${this.path}/bets/pending/count`, this.coinflipController.getPendingBetsCount);
         this.router.get(`${this.path}/bets/liquidatable`, this.coinflipController.getPublicLiquidatableBets);
     }

@@ -34,6 +34,18 @@ class CoinflipContractQuerier {
         );
     }
 
+    public async queryPendingBetById(address: string, betId: string): Promise<PendingBet> {
+        return await this.terra.wasm.contractQuery<PendingBet>(
+            this.contract,
+            {
+                pending_bet_by_id: {
+                    address: address,
+                    bet_id: betId,
+                }
+            }
+        )
+    }
+
     public async queryPendingBets(filter: PendingBetsFilterDto): Promise<PendingBet[]> {
         return await this.terra.wasm.contractQuery<PendingBet[]>(
             this.contract,
