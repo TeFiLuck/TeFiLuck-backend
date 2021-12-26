@@ -26,6 +26,18 @@ class CoinflipController {
         }
     }
 
+    public getPendingBetById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+        try {
+            const address = String(req.params.address);
+            const betId = String(req.params.betId);
+
+            const pendingBet = await this.coinFlipService.getPendingBetById(address, betId);
+            res.status(200).json(pendingBet);
+        } catch (error) {
+            next(error);
+        }
+    }
+
     public getPendingBets = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
             const filter: PendingBetsFilterDto = req.body;

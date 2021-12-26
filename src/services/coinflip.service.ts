@@ -22,6 +22,10 @@ class CoinflipService {
         return new MyBetsResponse(pending.bets, ongoing);
     }
 
+    public async getPendingBetById(address: string, betId: string): Promise<PendingBet> {
+        return await this.querier.queryPendingBetById(address, betId);
+    }
+
     public async getPendingBets(filter: PendingBetsFilterDto): Promise<PendingBetsResponse> {
         const pendingBets = await this.querier.queryPendingBets(filter);
         return new PendingBetsResponse(pendingBets);

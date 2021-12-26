@@ -75,6 +75,27 @@ paths:
         200:
           desciption: 'OK'
 
+  /api/coinflip/bets/pending/{address}/{betId}:
+    get:
+      tags:
+      - coinflip
+      summary: query pending bet by id
+      parameters:
+      - name: address
+        in: path
+        desciption: wallet address
+        required: true
+        type: string
+      - name: betId
+        in: path
+        desciption: bet id
+        required: true
+        type: string
+      responses:
+        200:
+          desciption: 'OK'
+
+
   /api/coinflip/bets/pending/count:
     get:
       tags:
@@ -138,9 +159,9 @@ definitions:
       denom:
         type: string
       bet_size_from:
-        type: integer
+        type: string
       bet_size_to:
-        type: integer
+        type: string
 
   sort_by:
     type: object
