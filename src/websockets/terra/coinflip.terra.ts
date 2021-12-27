@@ -1,15 +1,13 @@
 import config from 'config';
-import { EventsByType, TendermintQuery, TxInfo, WebSocketClient } from '@terra-money/terra.js';
+import { EventsByType, TendermintQuery, WebSocketClient } from '@terra-money/terra.js';
 import { MessageSubscriber } from '@websockets/interfaces/subsriber.interface';
 import { MessageBroadcaster } from '@websockets/interfaces/broadcaster.interface';
 import TerraTxQuerier from '@/infrastructure/tx.querier';
-import { WsMessage } from '../interfaces/message.interface';
 import { PlaceBetWsMessage } from '../messages/coinflip/placeBet.message';
 import { RespondBetWsMessage } from '../messages/coinflip/respondBet.message';
 import { ResolveBetWsMessage } from '../messages/coinflip/resolveBet.message';
 import { LiquidateBetWsMessage } from '../messages/coinflip/liquidateBet.message';
 import { WithdrawPendingBetWsMessage } from '../messages/coinflip/withdrawPendingBet.message';
-
 
 class TerraWsCoinflipContractListener implements MessageSubscriber {
     public broadcaster: MessageBroadcaster;
@@ -18,7 +16,7 @@ class TerraWsCoinflipContractListener implements MessageSubscriber {
     private txQuerier = new TerraTxQuerier();
 
     constructor(terraWsUrl: string, broadcaster: MessageBroadcaster) {
-        this.wsClient = new WebSocketClient(terraWsUrl);
+        this.wsClient = new WebSocketClient(terraWsUrl, -1, 1000);
         this.broadcaster = broadcaster;
     }
 
@@ -30,7 +28,7 @@ class TerraWsCoinflipContractListener implements MessageSubscriber {
         };
 
         this.wsClient.subscribeTx(subscribeContractEventsMsg, async data => {
-            await new Promise(resolve => setTimeout(resolve, 1000)); // sleep until tx info could be fetched
+            await new Promise(resolve => setTimeout(resolve, 2000)); // sleep until tx info could be fetched
 
             const txInfo = await this.txQuerier.queryTxInfo(data.value.TxResult.txhash);
             const msg = this.resolveMessageType(txInfo.logs[0].eventsByType);
