@@ -1,10 +1,10 @@
 import { Asset } from "./asset.response";
 
 export interface OngoingBet {
-    betId: string;
-    betCreator: string;
-    betResponder: string;
-    responderSide: string;
+    id: string;
+    owner: string;
+    responder: string;
+    responderSide: number;
     asset: Asset;
     blocksUntilLiquidation: number;
     liquidationBlock: number;
