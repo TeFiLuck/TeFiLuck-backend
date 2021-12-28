@@ -7,7 +7,7 @@ export interface HistoricalBetsResponse {
 export interface HistoricalBet {
     id: string;
     owner: string;
-    bet_responder: string;
+    responder: string;
     winner: string;
     responder_side: number;
     amount: Asset;
