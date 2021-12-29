@@ -8,6 +8,7 @@ import { RespondBetWsMessage } from '../messages/coinflip/respondBet.message';
 import { ResolveBetWsMessage } from '../messages/coinflip/resolveBet.message';
 import { LiquidateBetWsMessage } from '../messages/coinflip/liquidateBet.message';
 import { WithdrawPendingBetWsMessage } from '../messages/coinflip/withdrawPendingBet.message';
+import { logger } from '@/utils/logger';
 
 class TerraWsCoinflipContractListener implements MessageSubscriber {
     public broadcaster: MessageBroadcaster;
@@ -28,11 +29,15 @@ class TerraWsCoinflipContractListener implements MessageSubscriber {
         };
 
         this.wsClient.subscribeTx(subscribeContractEventsMsg, async data => {
-            await new Promise(resolve => setTimeout(resolve, 2000)); // sleep until tx info could be fetched
+            try {
+                await new Promise(resolve => setTimeout(resolve, 2000)); // sleep until tx info could be fetched
 
-            const txInfo = await this.txQuerier.queryTxInfo(data.value.TxResult.txhash);
-            const msg = this.resolveMessageType(txInfo.logs[0].eventsByType);
-            this.broadcaster.handleCallback(msg);
+                const txInfo = await this.txQuerier.queryTxInfo(data.value.TxResult.txhash);
+                const msg = this.resolveMessageType(txInfo.logs[0].eventsByType);
+                this.broadcaster.handleCallback(msg);
+            } catch (e) {
+                logger.error(e);
+            }
         });
 
         this.wsClient.start();

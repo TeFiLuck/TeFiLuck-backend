@@ -11,5 +11,5 @@
     "terraWsUrl": "ws://localhost:26657/websocket",
     "terraLcdUrl": "http://localhost:1317",
     "terraChainId": "localterra",
-    "p2pcoinflipContract": "terra12fxrr4s3a6hf7xlfy03ce6u0gl7spf0gkcv3jz"
+    "p2pcoinflipContract": "terra138pctddegrxz9ctsh07pe2x6vmleydxqlg302r"
 }
