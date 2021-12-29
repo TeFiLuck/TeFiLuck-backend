@@ -121,6 +121,11 @@ paths:
         desciption: amount of bets to query
         required: true
         type: integer
+      - name: exclude_address
+        in: query
+        desciption: amount of bets to query
+        required: false
+        type: string
       responses:
         200:
           desciption: 'OK'

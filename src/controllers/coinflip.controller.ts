@@ -63,8 +63,10 @@ class CoinflipController {
         try {
             const skip = Number(req.query.skip);
             const limit = Number(req.query.limit);
+            const exclude_address = req.query.exclude_address === undefined ?
+                null : String(req.query.exclude_address) === "null" ? null : String(req.query.exclude_address);
 
-            const bets = await this.coinFlipService.getPublicLiquidatableBets(skip, limit);
+            const bets = await this.coinFlipService.getPublicLiquidatableBets(skip, limit, exclude_address);
             res.status(200).json(bets);
         } catch (error) {
             next(error);
