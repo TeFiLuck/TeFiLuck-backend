@@ -35,8 +35,8 @@ class CoinflipService {
         return await this.querier.queryPendingBetsCount();
     }
 
-    public async getPublicLiquidatableBets(skip: number, limit: number): Promise<OngoingBet[]> {
-        return await this.querier.queryPublicLiquidatableBets(skip, limit);
+    public async getPublicLiquidatableBets(skip: number, limit: number, exclude_address: string | null): Promise<OngoingBet[]> {
+        return await this.querier.queryPublicLiquidatableBets(skip, limit, exclude_address);
     }
 
     public async getHistoricalBets(skip: number, limit: number, address: string): Promise<any> {

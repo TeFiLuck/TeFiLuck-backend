@@ -95,13 +95,14 @@ class CoinflipContractQuerier {
         );
     }
 
-    public async queryPublicLiquidatableBets(skip: number, limit: number): Promise<OngoingBet[]> {
+    public async queryPublicLiquidatableBets(skip: number, limit: number, exclude_address: string | null): Promise<OngoingBet[]> {
         return await this.terra.wasm.contractQuery<OngoingBet[]>(
             this.contract,
             {
                 public_liquidatable: {
                     skip: skip,
                     limit: limit,
+                    exclude_address: exclude_address,
                 }
             }
         );
