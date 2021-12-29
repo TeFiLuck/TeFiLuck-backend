@@ -9,7 +9,7 @@ export interface HistoricalBet {
     owner: string;
     responder: string;
     winner: string;
-    liquidator: string;
+    liquidator: string | null;
     responder_side: number;
     amount: Asset;
     outcome: string;

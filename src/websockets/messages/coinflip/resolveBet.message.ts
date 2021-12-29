@@ -16,7 +16,7 @@ export class HistoricalBetData implements HistoricalBet {
     public owner: string;
     public responder: string;
     public winner: string;
-    public liquidator: string;
+    public liquidator: string | null;
     public responder_side: number;
     public amount: Asset;
     public outcome: string;
@@ -27,7 +27,7 @@ export class HistoricalBetData implements HistoricalBet {
         this.owner = wasmEvent.owner[0];
         this.responder = wasmEvent.responder[0];
         this.winner = wasmEvent.winner[0];
-        this.liquidator = wasmEvent.liquidator[0];
+        this.liquidator = wasmEvent.liquidator === undefined ? null : wasmEvent.liquidator[0];
         this.responder_side = Number(wasmEvent.responder_side[0]);
         this.amount = new AssetResponse(
             wasmEvent.denom[0],
