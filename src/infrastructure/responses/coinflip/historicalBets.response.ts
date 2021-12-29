@@ -9,8 +9,8 @@ export interface HistoricalBet {
     owner: string;
     responder: string;
     winner: string;
-    responderSide: number;
+    responder_side: number;
     amount: Asset;
     outcome: string;
-    time: number;
+    created_at: number;
 }

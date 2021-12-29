@@ -1,21 +1,12 @@
 import { TxInfo } from "@terra-money/terra.js";
 import { WsMessageType, WsMessage } from "@websockets/interfaces/message.interface";
+import { HistoricalBetData } from "./resolveBet.message";
 
-export class LiquidateBetWsMessage implements WsMessage<LiquidateBetData> {
+export class LiquidateBetWsMessage implements WsMessage<HistoricalBetData> {
     public type: WsMessageType = "liquidate_bet_message";
-    public data: LiquidateBetData;
+    public data: HistoricalBetData;
 
     constructor(wasmEvent: any) {
-        this.data = new LiquidateBetData(
-            wasmEvent.bet_id[0],
-        );
-    }
-}
-
-export class LiquidateBetData {
-    public betId: string;
-
-    constructor(betId: string) {
-        this.betId = betId;
+        this.data = new HistoricalBetData(wasmEvent);
     }
 }
