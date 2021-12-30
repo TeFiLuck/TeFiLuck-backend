@@ -14,4 +14,5 @@ export interface HistoricalBet {
     amount: Asset;
     outcome: string;
     created_at: number;
+    completed_at: number;
 }
