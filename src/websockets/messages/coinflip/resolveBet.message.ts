@@ -21,6 +21,7 @@ export class HistoricalBetData implements HistoricalBet {
     public amount: Asset;
     public outcome: string;
     public created_at: number;
+    public completed_at: number;
 
     constructor(wasmEvent: any) {
         this.id = wasmEvent.bet_id[0];
@@ -35,5 +36,6 @@ export class HistoricalBetData implements HistoricalBet {
         );
         this.outcome = wasmEvent.outcome[0];
         this.created_at = Number(wasmEvent.created_at[0]);
+        this.completed_at = Number(wasmEvent.completed_at[0]);
     }
 }
