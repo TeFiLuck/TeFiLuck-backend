@@ -66,7 +66,7 @@ class App {
     const options = {
       swaggerDefinition: {
         info: {
-          title: 'TeFiLuck API',
+          title: `TeFiLuck API (${this.env})`,
           version: '1.0.0',
           // description: 'Example docs',
         },
