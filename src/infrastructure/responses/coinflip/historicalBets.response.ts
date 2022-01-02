@@ -11,7 +11,7 @@ export interface HistoricalBet {
     winner: string;
     liquidator: string | null;
     responder_side: number;
-    amount: Asset;
+    asset: Asset;
     outcome: string;
     created_at: number;
     completed_at: number;
