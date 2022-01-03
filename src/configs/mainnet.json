@@ -11,5 +11,5 @@
     "terraWsUrl": "wss://terra-rpc.easy2stake.com/websocket",
     "terraLcdUrl": "https://lcd.terra.dev",
     "terraChainId": "columbus-5",
-    "p2pcoinflipContract": "terra1v7767uu6a9pq8u49zes7grra5skvmmmua5x3cj"
+    "p2pcoinflipContract": "terra1nzmkztt9q682yxpza24y3kvtzgt48decpk8x3r"
 }
