@@ -8,7 +8,7 @@
         "origin": true,
         "credentials": true
     },
-    "terraWsUrl": "wss://terra-rpc.easy2stake.com/websocket",
+    "terraWsUrl": "ws://public-node.terra.dev:26657/websocket",
     "terraLcdUrl": "https://lcd.terra.dev",
     "terraChainId": "columbus-5",
     "p2pcoinflipContract": "terra1nzmkztt9q682yxpza24y3kvtzgt48decpk8x3r"
